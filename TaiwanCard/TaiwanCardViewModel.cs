@@ -68,10 +68,11 @@ namespace TaiwanCard
 		}
 
 		public ICommand ToggleShowingTransrationCommand { get; }
+		public ICommand BackWordCommand { get; }
 		public ICommand NextWordCommand { get; }
 
 		private TaiwanCardModel CardModel = new TaiwanCardModel();
-		private int CardIndex = -1;
+		private int CardIndex = 0;
 		#endregion
 
 		public TaiwanCardViewModel()
@@ -80,13 +81,18 @@ namespace TaiwanCard
 			{
 				ShowingTransration = !ShowingTransration;
 			});
+			BackWordCommand = new Command((nothing) =>
+			{
+				BackWord();
+				HideTransration();
+			});
 			NextWordCommand = new Command((nothing) =>
 			{
 				NextWord();
 				HideTransration();
 			});
 
-			NextWord();
+			ShowCard(CardIndex);
 		}
 
 		private void HideTransration()
@@ -94,19 +100,35 @@ namespace TaiwanCard
 			ShowingTransration = false;
 		}
 
+		private void BackWord()
+		{
+			CardIndex--;
+			if (CardIndex < 0)
+			{
+				CardIndex = CardModel.CardList.Count - 1;
+			}
+
+			ShowCard(CardIndex);
+		}
 		private void NextWord()
 		{
-			if (CardModel.CardList.Count == 0)
+			CardIndex++;
+			if (CardIndex >= CardModel.CardList.Count)
+			{
+				CardIndex = 0;
+			}
+
+			ShowCard(CardIndex);
+		}
+
+		private void ShowCard(int cardIndex)
+		{
+			if (cardIndex < 0 || cardIndex >= CardModel.CardList.Count)
 			{
 				return;
 			}
 
-			CardIndex++;
-			if (CardIndex >= CardModel.CardList.Count){
-				CardIndex = 0;
-			}
-
-			Card nextCard = CardModel.CardList[CardIndex];
+			Card nextCard = CardModel.CardList[cardIndex];
 			WordTaiwan = nextCard.Chinese;
 			WordJapan = nextCard.Japanese;
 		}

@@ -47,6 +47,7 @@
     <Compile Include="TaiwanCardModel.cs" />
     <Compile Include="ModelBase.cs" />
     <Compile Include="Database\Cards.cs" />
+    <Compile Include="ExAbsoluteLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

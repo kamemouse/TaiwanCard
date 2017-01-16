@@ -24,22 +24,24 @@
 				Text="{Binding WordJapan}"
 				IsVisible="{Binding ShowingTransration}" />
 		</Frame>
-		<AbsoluteLayout
+		<local:ExAbsoluteLayout
+				LeftSwiped="Handle_LeftSwipe"
+				RightSwiped="Handle_RightSwipe"
 			HorizontalOptions="CenterAndExpand"
 			Margin="10,0,10,10">
-			<AbsoluteLayout.GestureRecognizers>
+			<local:ExAbsoluteLayout.GestureRecognizers>
 				<TapGestureRecognizer
-						Command="{Binding NextWordCommand}" />
-			</AbsoluteLayout.GestureRecognizers>
+						Command="{Binding ToggleShowingTransrationCommand}" />
+			</local:ExAbsoluteLayout.GestureRecognizers>
 			<Image
 				Source="{local:ImageResourceExtension TaiwanCard.Resources.Images.WordCard.jpg}" />
 			<Label
 				FontSize="Large"
 				VerticalTextAlignment="Center"
-				AbsoluteLayout.LayoutBounds="100,55,160,115"
+				local:ExAbsoluteLayout.LayoutBounds="100,55,160,115"
 				Text="{Binding WordTaiwan}" />
-		</AbsoluteLayout>
-		<Button
+		</local:ExAbsoluteLayout>
+<!--		<Button
 			Margin="70,10,70,0"
 			BorderWidth="1"
 			Text="{Binding TextTurnButton}"
@@ -48,6 +50,6 @@
 			Margin="70,10,70,0"
 			BorderWidth="1"
 			Text="Next"
-			Command="{Binding NextWordCommand}" />
+			Command="{Binding NextWordCommand}" />-->
 	</StackLayout>
 </ContentPage>
