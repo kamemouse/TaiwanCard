@@ -5,7 +5,7 @@
 		<local:TaiwanCardViewModel />
 	</ContentPage.BindingContext>
 	<StackLayout Margin="10,60,10,10" Spacing="5">
-		<Label Text="台湾語（中国簡体字）" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
+		<Label Text="台湾華語（中国繁体字）" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Frame HeightRequest="85" Margin="70,10,70,0">
 			<Label VerticalTextAlignment="Center" FontSize="Large">
 				<Label.Triggers>
