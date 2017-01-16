@@ -38,7 +38,12 @@
 			<Label
 				FontSize="Large"
 				VerticalTextAlignment="Center"
-				local:ExAbsoluteLayout.LayoutBounds="100,55,160,115"
+				local:ExAbsoluteLayout.LayoutBounds="100,55,160,55"
+				Text="{Binding WordPinyin}" />
+			<Label
+				FontSize="Large"
+				VerticalTextAlignment="Center"
+				local:ExAbsoluteLayout.LayoutBounds="100,110,160,60"
 				Text="{Binding WordTaiwan}" />
 		</local:ExAbsoluteLayout>
 <!--		<Button

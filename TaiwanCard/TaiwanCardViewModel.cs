@@ -24,6 +24,23 @@ namespace TaiwanCard
 		}
 		private string _WordTaiwan = "*Loading...*";
 
+		public string WordPinyin
+		{
+			get
+			{
+				return _WordPinyin;
+			}
+			set
+			{
+				if (_WordPinyin != value)
+				{
+					_WordPinyin = value;
+					RaisePropertyChanged(nameof(WordPinyin));
+				}
+			}
+		}
+		private string _WordPinyin = "";
+
 		public string WordJapan
 		{
 			get
@@ -129,6 +146,7 @@ namespace TaiwanCard
 			}
 
 			Card nextCard = CardModel.CardList[cardIndex];
+			WordPinyin = nextCard.Pinyin;
 			WordTaiwan = nextCard.Chinese;
 			WordJapan = nextCard.Japanese;
 		}
