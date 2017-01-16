@@ -1,52 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
-	xmlns="http://xamarin.com/schemas/2014/forms"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:local="clr-namespace:TaiwanCard"
-	x:Class="TaiwanCard.TaiwanCardPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	 xmlns:local="clr-namespace:TaiwanCard" x:Class="TaiwanCard.TaiwanCardPage">
 	<ContentPage.BindingContext>
 		<local:TaiwanCardViewModel />
 	</ContentPage.BindingContext>
-	<StackLayout
-		Margin="10,60,10,10"
-		Spacing="5">
-		<Label
-			Text="台湾語（中国簡体字）"
-			FontSize="Large"
-			VerticalOptions="Center"
-			HorizontalOptions="Center" />
-		<Frame
-			HeightRequest="85"
-			Margin="70,10,70,0">
-			<Label
-				VerticalTextAlignment="Center"
-				FontSize="Large"
-				Text="{Binding WordJapan}"
-				IsVisible="{Binding ShowingTransration}" />
+	<StackLayout Margin="10,60,10,10" Spacing="5">
+		<Label Text="台湾語（中国簡体字）" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
+		<Frame HeightRequest="85" Margin="70,10,70,0">
+			<Label VerticalTextAlignment="Center" FontSize="Large">
+				<Label.Triggers>
+					<DataTrigger TargetType="Label" Binding="{Binding ShowingTransration}" Value="False">
+						<Setter Property="TextColor" Value="Gray" />
+						<Setter Property="Text" Value="▽単語をタップ▽" />
+					</DataTrigger>
+					<DataTrigger TargetType="Label" Binding="{Binding ShowingTransration}" Value="True">
+						<Setter Property="TextColor" Value="Black" />
+						<Setter Property="Text" Value="{Binding WordJapan}" />
+					</DataTrigger>
+				</Label.Triggers>
+			</Label>
 		</Frame>
-		<local:ExAbsoluteLayout
-				LeftSwiped="Handle_LeftSwipe"
-				RightSwiped="Handle_RightSwipe"
-			HorizontalOptions="CenterAndExpand"
-			Margin="10,0,10,10">
+		<local:ExAbsoluteLayout LeftSwiped="Handle_LeftSwipe" RightSwiped="Handle_RightSwipe"
+			 HorizontalOptions="CenterAndExpand" Margin="10,0,10,10">
 			<local:ExAbsoluteLayout.GestureRecognizers>
-				<TapGestureRecognizer
-						Command="{Binding ToggleShowingTransrationCommand}" />
+				<TapGestureRecognizer Command="{Binding ToggleShowingTransrationCommand}" />
 			</local:ExAbsoluteLayout.GestureRecognizers>
-			<Image
-				Source="{local:ImageResourceExtension TaiwanCard.Resources.Images.WordCard.jpg}" />
-			<Label
-				FontSize="Large"
-				VerticalTextAlignment="Center"
-				local:ExAbsoluteLayout.LayoutBounds="100,55,160,55"
-				Text="{Binding WordPinyin}" />
-			<Label
-				FontSize="Large"
-				VerticalTextAlignment="Center"
-				local:ExAbsoluteLayout.LayoutBounds="100,110,160,60"
-				Text="{Binding WordTaiwan}" />
+			<Image Source="{local:ImageResourceExtension TaiwanCard.Resources.Images.WordCard.jpg}" />
+			<Label FontSize="Large" VerticalTextAlignment="Center" local:ExAbsoluteLayout.LayoutBounds="100,55,160,55"
+				 Text="{Binding WordPinyin}" />
+			<Label FontSize="Large" VerticalTextAlignment="Center" local:ExAbsoluteLayout.LayoutBounds="100,110,160,60"
+				 Text="{Binding WordTaiwan}" />
 		</local:ExAbsoluteLayout>
-<!--		<Button
+		<!--		<Button
 			Margin="70,10,70,0"
 			BorderWidth="1"
 			Text="{Binding TextTurnButton}"
