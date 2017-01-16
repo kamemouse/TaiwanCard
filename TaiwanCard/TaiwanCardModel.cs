@@ -12,7 +12,8 @@ namespace TaiwanCard
 {
 	public class TaiwanCardModel : ModelBase
 	{
-		private const string URL_AIRTABLE = "https://api.airtable.com/v0/appiML4EFdwTL9t4l/Cards?maxRecords=3&view=Main%20View";
+		private const string URL_AIRTABLE = "https://api.airtable.com/v0/appiML4EFdwTL9t4l/Cards?view=Main%20View";
+		//private const string URL_AIRTABLE = "https://api.airtable.com/v0/appiML4EFdwTL9t4l/Cards?maxRecords=3&view=Main%20View";
 
 		public List<Card> CardList
 		{
