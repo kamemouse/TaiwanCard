@@ -7,6 +7,23 @@ namespace TaiwanCard
 	public class TaiwanCardViewModel : ViewModelBase
 	{
 		#region プロパティ、フィールド定義
+		public int WordNo
+		{
+			get
+			{
+				return _No;
+			}
+			set
+			{
+				if (_No != value)
+				{
+					_No = value;
+					RaisePropertyChanged(nameof(WordNo));
+				}
+			}
+		}
+		private int _No = 1;
+
 		public string WordTaiwan
 		{
 			get
@@ -146,6 +163,7 @@ namespace TaiwanCard
 			}
 
 			Card nextCard = CardModel.CardList[cardIndex];
+			WordNo = nextCard.No;
 			WordPinyin = nextCard.Pinyin;
 			WordTaiwan = nextCard.Chinese;
 			WordJapan = nextCard.Japanese;

@@ -5,7 +5,7 @@ namespace TaiwanCard
 {
 	public class Card
 	{
-		public int Number
+		public int No
 		{
 			get;
 			set;

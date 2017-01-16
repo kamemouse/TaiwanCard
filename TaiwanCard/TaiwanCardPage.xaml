@@ -8,6 +8,7 @@
 		<Label Text="台湾華語（中国繁体字）" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Frame HeightRequest="85" Margin="70,10,70,0">
 			<Label VerticalTextAlignment="Center" FontSize="Large">
+				<!-- ref: http://www.buildinsider.net/mobile/xamarintips/0045 -->
 				<Label.Triggers>
 					<DataTrigger TargetType="Label" Binding="{Binding ShowingTransration}" Value="False">
 						<Setter Property="TextColor" Value="Gray" />
@@ -26,6 +27,8 @@
 				<TapGestureRecognizer Command="{Binding ToggleShowingTransrationCommand}" />
 			</local:ExAbsoluteLayout.GestureRecognizers>
 			<Image Source="{local:ImageResourceExtension TaiwanCard.Resources.Images.WordCard.jpg}" />
+			<Label local:ExAbsoluteLayout.LayoutBounds="70,55,160,55"
+				 Text="{Binding WordNo}" />
 			<Label FontSize="Large" VerticalTextAlignment="Center" local:ExAbsoluteLayout.LayoutBounds="100,55,160,55"
 				 Text="{Binding WordPinyin}" />
 			<Label FontSize="Large" VerticalTextAlignment="Center" local:ExAbsoluteLayout.LayoutBounds="100,110,160,60"
