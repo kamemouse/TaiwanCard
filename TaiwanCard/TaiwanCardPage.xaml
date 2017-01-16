@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:TaiwanCard"
+	x:Class="TaiwanCard.TaiwanCardPage">
+	<ContentPage.BindingContext>
+		<local:TaiwanCardViewModel />
+	</ContentPage.BindingContext>
+	<StackLayout
+		Margin="10,60,10,10"
+		Spacing="5">
+		<Label
+			Text="台湾語（中国簡体字）"
+			FontSize="Large"
+			VerticalOptions="Center"
+			HorizontalOptions="Center" />
+		<Frame
+			HeightRequest="85"
+			Margin="70,10,70,0">
+			<Label
+				VerticalTextAlignment="Center"
+				FontSize="Large"
+				Text="{Binding WordJapan}"
+				IsVisible="{Binding ShowingTransration}" />
+		</Frame>
+		<AbsoluteLayout
+			HorizontalOptions="CenterAndExpand"
+			Margin="10,0,10,10">
+			<AbsoluteLayout.GestureRecognizers>
+				<TapGestureRecognizer
+						Command="{Binding NextWordCommand}" />
+			</AbsoluteLayout.GestureRecognizers>
+			<Image
+				Source="{local:ImageResourceExtension TaiwanCard.Resources.Images.WordCard.jpg}" />
+			<Label
+				FontSize="Large"
+				VerticalTextAlignment="Center"
+				AbsoluteLayout.LayoutBounds="100,55,160,115"
+				Text="{Binding WordTaiwan}" />
+		</AbsoluteLayout>
+		<Button
+			Margin="70,10,70,0"
+			BorderWidth="1"
+			Text="{Binding TextTurnButton}"
+			Command="{Binding ToggleShowingTransrationCommand}" />
+		<Button
+			Margin="70,10,70,0"
+			BorderWidth="1"
+			Text="Next"
+			Command="{Binding NextWordCommand}" />
+	</StackLayout>
+</ContentPage>
