@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -126,7 +127,19 @@ namespace TaiwanCard
 				HideTransration();
 			});
 
+			CardModel.PropertyChanged += HandlePropertyChangedEventHandler;
+
 			ShowCard(CardIndex);
+		}
+
+		void HandlePropertyChangedEventHandler(object sender, PropertyChangedEventArgs e)
+		{
+			switch (e.PropertyName)
+			{
+				case nameof(CardModel.CardList):
+					ShowCard(CardIndex);
+					break;
+			}
 		}
 
 		private void HideTransration()

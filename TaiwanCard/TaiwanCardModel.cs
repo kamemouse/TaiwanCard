@@ -17,9 +17,20 @@ namespace TaiwanCard
 
 		public List<Card> CardList
 		{
-			get;
-			private set;
+			get
+			{
+				return _CardList;
+			}
+			private set
+			{
+				if (_CardList != value)
+				{
+					_CardList = value;
+					RaisePropertyChanged(nameof(CardList));
+				}
+			}
 		}
+		private List<Card> _CardList;
 
 		public TaiwanCardModel()
 		{
@@ -29,21 +40,48 @@ namespace TaiwanCard
 
 		void LoadData()
 		{
-			CardList = RetriveDataCardList();
+			// 初回は3件のみ
+			CardList = RetriveDataCardList(3);
+
+			Task.Factory.StartNew(() =>
+			{
+				// 遅延処理で全件取得
+				CardList = RetriveDataCardList();
+			});
+		}
+
+		private List<Card> RetriveDataCardList(int size)
+		{
+			return RetriveDataCards(size).ToCardList();
 		}
 
 		private List<Card> RetriveDataCardList()
 		{
-			List<Card> cardList = null;
-			string resultJson = GetJsonFromUrl(URL_AIRTABLE);
+			List<Card> cardList = new List<Card>();
+			Cards cards = RetriveDataCards(100, "");
+			cardList.AddRange(cards.ToCardList());
+			while (cards.Offset != null)
+			{
+				cards = RetriveDataCards(100, cards.Offset);
+				cardList.AddRange(cards.ToCardList());
+			}
+			return cardList;
+		}
+
+		private Cards RetriveDataCards(int size, string offset = "")
+		{
+			string url = URL_AIRTABLE;
+			url += string.Format("&pageSize={0}", size);
+			if (offset != "")
+			{
+				url += string.Format("&offset={0}", offset);
+			}
+			string resultJson = GetJsonFromUrl(url);
 
 			// JSON形式のデータをデシリアライズ
 			Cards cards = JsonConvert.DeserializeObject<Cards>(resultJson);
 
-			// List でデータを返す
-			cardList = cards.ToCardList();
-
-			return cardList;
+			return cards;
 		}
 
 		private string GetJsonFromUrl(string url)
