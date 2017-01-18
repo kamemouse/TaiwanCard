@@ -2,14 +2,14 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace TaiwanCard
+namespace Kixmate.Share
 {
 	#region ** Class : ViewModelBase
 	/// <summary>
 	/// ViewModelの基底クラス
 	/// INotifyPropertyChanged と IDataErrorInfo を実装する
 	/// </summary>
-	public abstract class ViewModelBase : INotifyPropertyChanged
+	public abstract class ModelBase : INotifyPropertyChanged
 	{
 		#region == implement of INotifyPropertyChanged ==
 
@@ -62,59 +62,6 @@ namespace TaiwanCard
 		//}
 
 		//#endregion
-
-		#region == implemnt of ICommand Helper ==
-
-		#region ** Class : _DelegateCommand
-		// ICommand実装用のヘルパークラス
-		private class _DelegateCommand : ICommand
-		{
-			private Action<object> _Command;        // コマンド本体
-			private Func<object, bool> _CanExecute;  // 実行可否
-
-			// コンストラクタ
-			public _DelegateCommand(Action<object> command, Func<object, bool> canExecute)
-			{
-				if (command == null)
-					throw new ArgumentNullException();
-
-				_Command = command;
-				_CanExecute = canExecute;
-			}
-
-			// ICommand.Executeの実装
-			void ICommand.Execute(object parameter)
-			{
-				_Command(parameter);
-			}
-
-			// ICommand.Executeの実装
-			bool ICommand.CanExecute(object parameter)
-			{
-				if (_CanExecute != null)
-					return _CanExecute(parameter);
-				else
-					return true;
-			}
-
-			// ICommand.CanExecuteChanged の実装
-			event EventHandler ICommand.CanExecuteChanged
-			{
-				add { }
-				remove { }
-				//add { CommandManager.RequerySuggested += value; }
-				//remove { CommandManager.RequerySuggested -= value; }
-			}
-		}
-		#endregion
-
-		// コマンドの生成
-		protected ICommand CreateCommand(Action<object> command, Func<object, bool> canExecute)
-		{
-			return new _DelegateCommand(command, canExecute);
-		}
-
-		#endregion
 	}
 	#endregion
 }

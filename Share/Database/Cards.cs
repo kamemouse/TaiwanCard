@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TaiwanCard
+namespace TaiwanCard.Share
 {
 	public class Cards
 	{

@@ -5,8 +5,10 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Kixmate.Share;
 using ModernHttpClient;
 using Newtonsoft.Json;
+using TaiwanCard.Share;
 
 namespace TaiwanCard
 {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using TaiwanCard.Share;
 
-namespace TaiwanCard
+namespace TaiwanCard.Shares
 {
 	public class CardSerializer
 	{

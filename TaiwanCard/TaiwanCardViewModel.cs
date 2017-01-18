@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
+using Kixmate.Share;
+using TaiwanCard.Share;
 using Xamarin.Forms;
 
 namespace TaiwanCard

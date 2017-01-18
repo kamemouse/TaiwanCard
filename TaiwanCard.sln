@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaiwanCard.iOS", "iOS\Taiwa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaiwanCard.Droid", "Droid\TaiwanCard.Droid.csproj", "{2535B757-E8F8-42AD-AFAD-5F23E108D807}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TaiwanCard.Share", "Share\TaiwanCard.Share.shproj", "{09573EB2-7875-41EA-A0B5-DCB401768ACA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Kixmate.Share", "Kixmate.Share\Kixmate.Share.shproj", "{30D9C6E3-0B03-4ACE-9698-68DB72C843F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
