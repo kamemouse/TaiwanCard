@@ -10,6 +10,7 @@ namespace TaiwanCard
 	public class TaiwanCardViewModel : ViewModelBase
 	{
 		#region プロパティ、フィールド定義
+		#region Binding Properties
 		public int WordNo
 		{
 			get
@@ -104,9 +105,39 @@ namespace TaiwanCard
 			}
 		}
 
+		public string Description
+		{
+			get
+			{
+				return _Description;
+			}
+			set
+			{
+				if (_Description != value)
+				{
+					_Description = value;
+					RaisePropertyChanged(nameof(Description));
+					RaisePropertyChanged(nameof(IsEmptyDescription));
+				}
+			}
+		}
+		private string _Description;
+		//private string _DescriptionImage;
+		//private string _DescriptionText;
+
+		public bool IsEmptyDescription
+		{
+			get
+			{
+				return string.IsNullOrEmpty(_Description);
+			}
+		}
+
+
 		public ICommand ToggleShowingTransrationCommand { get; }
 		public ICommand BackWordCommand { get; }
 		public ICommand NextWordCommand { get; }
+		#endregion
 
 		private TaiwanCardModel CardModel = new TaiwanCardModel();
 		private int CardIndex = 0;
