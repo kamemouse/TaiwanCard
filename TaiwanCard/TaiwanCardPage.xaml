@@ -4,20 +4,6 @@
 	<ContentPage.BindingContext>
 		<local:TaiwanCardViewModel />
 	</ContentPage.BindingContext>
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Style x:Key="DescriptionFrameStyle" TargetType="Frame">
-				<Style.Triggers>
-					<DataTrigger TargetType="Frame" Binding="{Binding IsEmptyDescription}" Value="True">
-						<Setter Property="IsVisible" Value="False" />
-					</DataTrigger>
-					<DataTrigger TargetType="Frame" Binding="{Binding IsEmptyDescription}" Value="False">
-						<Setter Property="IsVisible" Value="True" />
-					</DataTrigger>
-				</Style.Triggers>
-			</Style>
-		</ResourceDictionary>
-	</ContentPage.Resources>
 	<StackLayout Margin="10,60,10,10" Spacing="5">
 		<Label Text="台湾華語（中国繁体字）" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Frame HeightRequest="85" Margin="70,10,70,0">
@@ -48,7 +34,19 @@
 				 Text="{Binding WordTaiwan}" />
 		</local:ExAbsoluteLayout>
 		<!-- 説明 -->
-		<Frame Margin="10,10,10,0" VerticalOptions="FillAndExpand" Style="{StaticResource DescriptionFrameStyle}">
+		<Frame Margin="10,10,10,0" VerticalOptions="FillAndExpand">
+			<Frame.Style>
+				<Style TargetType="Frame">
+					<Style.Triggers>
+						<DataTrigger TargetType="Frame" Binding="{Binding IsEmptyDescription}" Value="True">
+							<Setter Property="IsVisible" Value="False" />
+						</DataTrigger>
+						<DataTrigger TargetType="Frame" Binding="{Binding IsEmptyDescription}" Value="False">
+							<Setter Property="IsVisible" Value="True" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Frame.Style>
 			<WebView>
 				<WebView.Source>
 					<HtmlWebViewSource Html="{Binding Description}" />
