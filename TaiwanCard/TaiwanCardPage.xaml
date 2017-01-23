@@ -12,7 +12,7 @@
 				<Label.Triggers>
 					<DataTrigger TargetType="Label" Binding="{Binding ShowingTransration}" Value="False">
 						<Setter Property="TextColor" Value="Gray" />
-						<Setter Property="Text" Value="単語をタップするかスワイプしてください" />
+						<Setter Property="Text" Value="▽単語をタップ▽&#xD;&#xA;or スワイプ" />
 					</DataTrigger>
 					<DataTrigger TargetType="Label" Binding="{Binding ShowingTransration}" Value="True">
 						<Setter Property="TextColor" Value="Black" />
